@@ -56,7 +56,7 @@ def build_sound_sets(args):
     alt_sounds = [load_sound(path) for path in alt_files]
     return [base_sounds, alt_sounds]
 
-
+#TODO: parse
 def main():
     parser = argparse.ArgumentParser(
         description="Read ESP32 touch events from serial and play m4a files for each touch input."
