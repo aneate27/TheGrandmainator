@@ -1,7 +1,8 @@
 # The Grandma-inator
 A knit fabric with three different sections of conductive thread, where for each part pressed individual a sound-byte from a grandma plays. When all three parts are pressed at once, it switches to Kardashian mode where a Kris Jenner sound-byte it played when each button is pressed.
 
-<img width="3024" height="4032" alt="IMG_5476 2" src="https://github.com/user-attachments/assets/2000a468-3d04-4a99-adcd-fa888b8370ce" />
+<img width="1512" height="2016" alt="IMG_5476 2" src="https://github.com/user-attachments/assets/2000a468-3d04-4a99-adcd-fa888b8370ce" />
+
 
 This project is a proof of concept that you can use conductive thread to knit a fabric into responsive buttons. There are a lot of things here that will be improved in my final project version, but this project was really helpful in teaching me what things I need to optimize and be careful of.
 
