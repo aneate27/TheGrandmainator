@@ -3,7 +3,7 @@
 #define TOUCH_THRESHOLD 40  // Adjust this value based on your touch sensor readings
 
 //TODO: check pins(T1 might have issue cause it's used for booting, maybe use T5)
-const int touchPins[3] = {T0, T1, T2};  // Touch pins: T0 (GPIO4), T1 (GPIO0), T2 (GPIO2)
+const int touchPins[3] = {2, 32, 27};  // Touch pins: T0 (GPIO4), T1 (GPIO0), T2 (GPIO2)
 bool previousState[3] = {false, false, false};
 
 void setup() {

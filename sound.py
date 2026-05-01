@@ -8,9 +8,11 @@ try:
     import pygame
     import serial
     from serial.tools import list_ports
+    from pydub import AudioSegment
+    from io import BytesIO
 except ImportError as exc:
     print("Missing required package:", exc)
-    print("Install with: pip install pyserial pygame")
+    print("Install with: pip install pyserial pygame pydub")
     sys.exit(1)
 
 TOUCH_EVENT_RE = re.compile(r"TOUCH([0-2])_(START|END)")
@@ -38,7 +40,15 @@ def load_sound(path: str):
         print(f"Sound file not found: {path}")
         sys.exit(1)
     try:
-        return pygame.mixer.Sound(path)
+        if path.lower().endswith('.m4a'):
+            # Load m4a using pydub and convert to wav in memory
+            audio = AudioSegment.from_file(path, format='m4a')
+            wav_buffer = BytesIO()
+            audio.export(wav_buffer, format='wav')
+            wav_buffer.seek(0)
+            return pygame.mixer.Sound(wav_buffer)
+        else:
+            return pygame.mixer.Sound(path)
     except pygame.error as exc:
         print(f"Failed to load sound '{path}': {exc}")
         sys.exit(1)
@@ -66,9 +76,9 @@ def main():
     parser.add_argument("--touch0-base", default="audio files/Golden_Girls.m4a", help="m4a file for touch 0 in base mode")
     parser.add_argument("--touch1-base", default="audio files/Lillian_Dronaik_Boyfriend.m4a", help="m4a file for touch 1 in base mode")
     parser.add_argument("--touch2-base", default="audio files/Lillian_Dronaik_Gravestone.m4a", help="m4a file for touch 2 in base mode")
-    parser.add_argument("--touch0-alt", default="audio files/Kim_you're_doing_amazing_sweetie.m4a", help="m4a file for touch 0 in alternate mode")
-    parser.add_argument("--touch1-alt", default="audio files/Kim_you're_doing_amazing_sweetie.m4a", help="m4a file for touch 1 in alternate mode")
-    parser.add_argument("--touch2-alt", default="audio files/Kim_you're_doing_amazing_sweetie.m4a", help="m4a file for touch 2 in alternate mode")
+    parser.add_argument("--touch0-alt", default="audio files/Kim.m4a", help="m4a file for touch 0 in alternate mode")
+    parser.add_argument("--touch1-alt", default="audio files/Kim.m4a", help="m4a file for touch 1 in alternate mode")
+    parser.add_argument("--touch2-alt", default="audio files/Kim.m4a", help="m4a file for touch 2 in alternate mode")
     args = parser.parse_args()
 
     if not args.port:
