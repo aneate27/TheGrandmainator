@@ -10,3 +10,8 @@ This project is a proof of concept that you can use conductive thread to knit a 
 Knit a piece of fabric, and to add conductive thread in sections yarn over with both your working yarn and the thread. Then knit as usual, keeping in mind that the stiffness of the thread makes it difficult to work with. When you are finished with a section, leave a long tail to be tied to your ESP32. (although I will note that it may be useful to grab an Arduino Lilypad component to make the interfacing significantly easier) Make sure that you are using pins 2, 32, and 27.
 
 Download the provided audio files as well as the source and sound code. Using PlatformIO, build and upload the source code to your ESP32 through a wired connection. Then run the sound code on your computer, where you will be prompted to select the port that connects your ESP32. It should now be up and running!
+
+I also created an ESP32 case out of plastic cross-stitch cards. An example of one side of the enclosure is shown below:
+
+<img width="4032" height="3024" alt="IMG_5485" src="https://github.com/user-attachments/assets/4dda0372-baca-405a-b7ad-baff29fb1104" />
+
